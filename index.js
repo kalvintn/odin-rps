@@ -1,11 +1,11 @@
 // Note: In JavaScript, function declarations (including the body) are hoisted
 
-// Control Flow
-// playGame(num) controls amount of rounds played
-// game variables defined globally
+// Game Variables
 let humanScore = 0;
 let computerScore = 0;
-playGame(5);
+
+
+//playGame(5);
 
 
 
@@ -28,17 +28,8 @@ function getComputerChoice(){
 
 
 
-/* Prompt human for their rps */
-function getHumanChoice(){
-    let humanChoice = prompt('Enter "rock", "paper", or "scissors".');
-
-    // handle reprompt
-    while(humanChoice == null || 
-            humanChoice !== 'rock' && 
-            humanChoice !== 'paper' && 
-            humanChoice !== 'scissors')
-        { humanChoice = prompt("Please try again. Enter 'rock', 'paper', or 'scissors'."); }
-
+/* Receives human answer from button event listener */
+function getHumanChoice(humanChoice){
     // standardize output
     humanChoice = humanChoice.toLowerCase();
     return humanChoice;

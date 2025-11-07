@@ -6,10 +6,29 @@
     <link rel="icon" type="image/png" href="./favicon.png">
     <title>Rock, Paper, Scissors</title>
     <script type="module" src="./index.js"></script>
+    <style>
+        body {
+            background-color: #d88eff;
+            padding: 0px 10px;
+            margin: 0;
+        }
+        button {
+            color: white;
+            font-weight: bold;
+            background-color: #2a6cdc;
+            padding: 10px 15px;
+            border: 2px solid white;
+            border-radius: 5px;
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
     <h2>Rock, Paper, Scissors!</h2>
-    <p>Open the Chrome console to see results.</p>
-    <p>Ctrl + Shift + J on Windows and Cmd + Option + J on Mac.</p>
+    <p>Click below to play.</p>
+    <p>See results in Console. Ctrl + Shift + J on Windows, or Cmd + Option + J on Mac.</p>
+    <button onclick="playRound('rock')">Rock</button>
+    <button onclick="playRound('paper')">Paper</button>
+    <button onclick="playRound('scissors')">Scissors</button>
 </body>
 </html>
