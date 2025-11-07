@@ -1,8 +1,13 @@
 // Note: In JavaScript, function declarations (including the body) are hoisted
 
 // Control Flow
-// playGame() loops through multiple rounds
-// game variables defined inside playGame()
+// playGame(num) controls amount of rounds played
+// game variables defined globally
+let humanScore = 0;
+let computerScore = 0;
+playGame(5);
+
+
 
 
 
@@ -40,12 +45,9 @@ function getHumanChoice(){
 }
 
 
-// Game Variables
-let humanScore = 0;
-let computerScore = 0;
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-playRound(humanSelection, computerSelection);
+
+
+
 /* Play Round : Compare human & computer results, dole points. */
 function playRound(humanChoice, computerChoice){
     // Case such that a tie occurs
@@ -68,7 +70,25 @@ function playRound(humanChoice, computerChoice){
     }
 
     // call to helper
-    printScore(humanScore, computerScore);
+    printScore();
+}
+
+
+
+
+
+function playGame(numRounds){
+    let humanSelection, computerSelection;
+
+    for(let i = 0; i < numRounds; i++){
+        // Need to reprompt for every round
+        humanSelection = getHumanChoice();
+        computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+    }
+
+    console.log("Game over! Tabulating final score. . .");
+    printScore();
 }
 
 
@@ -76,6 +96,6 @@ function playRound(humanChoice, computerChoice){
 
 
 /* Helper function : print score */
-function printScore(humanScore, computerScore){
+function printScore(){
     console.log(`Score: Human ${humanScore} / Computer ${computerScore}`);
 }
