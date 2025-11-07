@@ -2,12 +2,9 @@
 
 
 
-for(let i = 0; i < 10; i++){
-    console.log(getComputerChoice());
-}
 
 
-
+/* Generate a computer rps */
 function getComputerChoice(){
     // For integer ranges: Math.floor(Math.random() * (max - min) + min);
     // Not that min is inclusive and max is exclusive
@@ -18,4 +15,22 @@ function getComputerChoice(){
     if (randomInt == 0) return "rock";
     else if (randomInt == 1) return "paper";
     else return "scissors";
+}
+
+
+
+
+
+/* Prompt human for their rps */
+function getHumanChoice(){
+    let humanChoice = prompt('Enter "rock", "paper", or "scissors".');
+
+    // handle reprompt
+    while(humanChoice == null || 
+            humanChoice !== 'rock' && 
+            humanChoice !== 'paper' && 
+            humanChoice !== 'scissors')
+        { humanChoice = prompt("Please try again. Enter 'rock', 'paper', or 'scissors'."); }
+
+    return humanChoice;
 }
