@@ -4,7 +4,6 @@
 let humanScore = 0;
 let computerScore = 0;
 let humanSelection = "";
-let gameActive = false;
 let resultBox = document.querySelector(".result");
 
 
@@ -69,16 +68,9 @@ function playRound(humanChoice){
 
     // Check endgame state
     if(humanScore >= 5 || computerScore >=5){
-        resultBox.innerHTML += "Game over! Tabulating final score . . .<br>";
-        printScore();
+        endGame();
     }
 }
-
-
-
-
-
-
 
 
 /* Write score to DOM */
@@ -87,12 +79,38 @@ function printScore(){
 }
 
 
-/* Manual reset after first to 5 */
+/* Endgame logic after first to 5 */
+function endGame(){
+    resultBox.innerHTML += "Game over! Tabulating final score . . .<br>";
+    printScore();
+    if(humanScore == 5){
+        resultBox.innerHTML += "You win! Congratulations! Reset to play again.";
+    } else {
+        resultBox.innerHTML += "Sorry, you lost. Reset to play again.";
+    }
+
+    // disable button input after game ends
+    let gameplayButtons = Array.from(document.querySelector(".gameplay-buttons").children);
+    gameplayButtons.forEach(button => {
+        button.disabled = true;
+    });
+}
+
+
+
+
+/* Manual reset */
 function reset(){
     // Reset variables
     humanScore = 0;
     computerScore = 0;
     humanSelection = "";
     resultBox.innerHTML = "Game results...<br>";
+
+    // re-enable buttons to use again
+    let gameplayButtons = Array.from(document.querySelector(".gameplay-buttons").children);
+    gameplayButtons.forEach(button => {
+        button.disabled = false;
+    });
 }
 

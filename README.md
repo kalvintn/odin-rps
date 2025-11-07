@@ -1,4 +1,6 @@
+# Version
+1.0 - Basic logic design, score tracking, and game loop for a simple JavaScript game.  
+1.1 - Basic UI.
+
 # Author
-Basic logic design, score tracking, and game loop for a simple JavaScript game.  
-Made as a part of TOP Foundation.  
 Made by Kalvin Nguyen.

@@ -27,14 +27,19 @@
             border: 5px solid white;
             border-radius: 5px;
         }
+        .gameplay-buttons {
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
     <h2>Rock, Paper, Scissors!</h2>
     <p>Click below to play. Best of 5!</p>
-    <button onclick="playRound('rock')">Rock</button>
-    <button onclick="playRound('paper')">Paper</button>
-    <button onclick="playRound('scissors')">Scissors</button>
+    <div class="gameplay-buttons">
+        <button onclick="playRound('rock')">Rock</button>
+        <button onclick="playRound('paper')">Paper</button>
+        <button onclick="playRound('scissors')">Scissors</button>
+    </div>
     <button onclick="reset()">Reset</button>
 
     <!-- Display results of rps games. -->
