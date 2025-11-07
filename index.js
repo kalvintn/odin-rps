@@ -4,7 +4,7 @@
 let humanScore = 0;
 let computerScore = 0;
 let humanSelection = "";
-
+let gameActive = false;
 let resultBox = document.querySelector(".result");
 
 
@@ -43,46 +43,39 @@ function getHumanChoice(humanChoice){
 /* Play Round : Compare human & computer results, dole points. */
 function playRound(humanChoice){
     let computerChoice = getComputerChoice();
+
     // Case such that a tie occurs
     if(humanChoice === computerChoice){
-        resultBox.innerHTML += `tie! ${humanChoice} meets ${computerChoice}.&#9;`;
+        resultBox.innerHTML += `tie! ${humanChoice} meets ${computerChoice}.<br>`;
         console.log(resultBox);
     }
     // case such that player wins
     else if(humanChoice == "rock" && computerChoice == "scissors" ||
             humanChoice == "scissors" && computerChoice == "paper" ||
             humanChoice == "paper" && computerChoice == "rock")
-    {   resultBox.innerHTML += `You win! ${humanChoice} beats ${computerChoice}.&#9;`;
+    {   resultBox.innerHTML += `You win! ${humanChoice} beats ${computerChoice}.<br>`;
         humanScore++;
     }
     // case such that computer wins
      else if(computerChoice == "rock" && humanChoice == "scissors" ||
             computerChoice == "scissors" && humanChoice == "paper" ||
             computerChoice == "paper" && humanChoice == "rock")
-    {   resultBox.innerHTML += `Computer wins! ${computerChoice} beats ${humanChoice}. &#9;`;
+    {   resultBox.innerHTML += `Computer wins! ${computerChoice} beats ${humanChoice}.<br>`;
         computerScore++;
     }
 
     // call to helper
     printScore();
+
+    // Check endgame state
+    if(humanScore >= 5 || computerScore >=5){
+        resultBox.innerHTML += "Game over! Tabulating final score . . .<br>";
+        printScore();
+    }
 }
 
 
 
-
-/*
-function playGame(numRounds){
-    let humanSelection, computerSelection;
-
-    for(let i = 0; i < numRounds; i++){
-        // Need to reprompt for every round
-        computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-    }
-
-    console.log("Game over! Tabulating final score. . .");
-    printScore();
-} */
 
 
 
@@ -94,5 +87,12 @@ function printScore(){
 }
 
 
-// click option -> start game, if game is not already in progress
-// click option, run next round
+/* Manual reset after first to 5 */
+function reset(){
+    // Reset variables
+    humanScore = 0;
+    computerScore = 0;
+    humanSelection = "";
+    resultBox.innerHTML = "Game results...<br>";
+}
+
