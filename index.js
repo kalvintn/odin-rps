@@ -3,9 +3,10 @@
 // Game Variables
 let humanScore = 0;
 let computerScore = 0;
+let humanSelection = "";
 
+let resultBox = document.querySelector(".result");
 
-//playGame(5);
 
 
 
@@ -32,7 +33,7 @@ function getComputerChoice(){
 function getHumanChoice(humanChoice){
     // standardize output
     humanChoice = humanChoice.toLowerCase();
-    return humanChoice;
+    humanSelection =  humanChoice;
 }
 
 
@@ -40,23 +41,25 @@ function getHumanChoice(humanChoice){
 
 
 /* Play Round : Compare human & computer results, dole points. */
-function playRound(humanChoice, computerChoice){
+function playRound(humanChoice){
+    let computerChoice = getComputerChoice();
     // Case such that a tie occurs
     if(humanChoice === computerChoice){
-        console.log(`tie! ${humanChoice} meets ${computerChoice}.`);
+        resultBox.innerHTML += `tie! ${humanChoice} meets ${computerChoice}.&#9;`;
+        console.log(resultBox);
     }
     // case such that player wins
     else if(humanChoice == "rock" && computerChoice == "scissors" ||
             humanChoice == "scissors" && computerChoice == "paper" ||
             humanChoice == "paper" && computerChoice == "rock")
-    {   console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+    {   resultBox.innerHTML += `You win! ${humanChoice} beats ${computerChoice}.&#9;`;
         humanScore++;
     }
     // case such that computer wins
      else if(computerChoice == "rock" && humanChoice == "scissors" ||
             computerChoice == "scissors" && humanChoice == "paper" ||
             computerChoice == "paper" && humanChoice == "rock")
-    {   console.log(`Computer wins! ${computerChoice} beats ${humanChoice}.`);
+    {   resultBox.innerHTML += `Computer wins! ${computerChoice} beats ${humanChoice}. &#9;`;
         computerScore++;
     }
 
@@ -67,26 +70,29 @@ function playRound(humanChoice, computerChoice){
 
 
 
-
+/*
 function playGame(numRounds){
     let humanSelection, computerSelection;
 
     for(let i = 0; i < numRounds; i++){
         // Need to reprompt for every round
-        humanSelection = getHumanChoice();
         computerSelection = getComputerChoice();
         playRound(humanSelection, computerSelection);
     }
 
     console.log("Game over! Tabulating final score. . .");
     printScore();
-}
+} */
 
 
 
 
 
-/* Helper function : print score */
+/* Write score to DOM */
 function printScore(){
-    console.log(`Score: Human ${humanScore} / Computer ${computerScore}`);
+    resultBox.innerHTML += `Score: Human ${humanScore} / Computer ${computerScore}<br>`;
 }
+
+
+// click option -> start game, if game is not already in progress
+// click option, run next round

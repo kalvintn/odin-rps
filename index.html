@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="./favicon.png">
     <title>Rock, Paper, Scissors</title>
-    <script type="module" src="./index.js"></script>
+    <script src="./index.js" defer></script>
     <style>
         body {
             background-color: #d88eff;
@@ -16,19 +16,30 @@
             color: white;
             font-weight: bold;
             background-color: #2a6cdc;
-            padding: 10px 15px;
-            border: 2px solid white;
+            padding: 15px 20px;
+            border: 3px solid white;
             border-radius: 5px;
             margin: 10px;
+        }
+        .result {
+            min-height: 500px;
+            padding: 20px;
+            border: 5px solid white;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <h2>Rock, Paper, Scissors!</h2>
     <p>Click below to play.</p>
-    <p>See results in Console. Ctrl + Shift + J on Windows, or Cmd + Option + J on Mac.</p>
     <button onclick="playRound('rock')">Rock</button>
     <button onclick="playRound('paper')">Paper</button>
     <button onclick="playRound('scissors')">Scissors</button>
+    <button>Reset</button>
+
+    <!-- Display results of rps games. -->
+    <div class="result">
+        Game results...<br>
+    </div>
 </body>
 </html>
